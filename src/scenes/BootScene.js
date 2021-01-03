@@ -10,6 +10,17 @@ class BootScene extends Scene {
     this.load.image('background', 'assets/Environment/background.png')
     this.load.image('columns', 'assets/Environment/columns.png')
 
+     // load tiled map
+    this.load.image('tiles', 'assets/Environment/tileset.png', {
+      frameWidth: 16,
+      frameHeight: 16
+    })
+    this.load.tilemapTiledJSON("map", "assets/map/test.json");
+
+
+
+    // atlas
+    this.load.atlas("atlas", 'assets/atlas/atlas.png', "assets/atlas/atlas.json" );
 
     //preloading enter + title
     this.load.image("title", "assets/images/title-screen.png");
@@ -17,11 +28,6 @@ class BootScene extends Scene {
     this.load.image("enter", "assets/images/press-enter-text.png");
     this.load.image("instructions", "assets/images/instructions.png");
     this.load.image("gameover", "assets/images/game-over.png");
-
-
-    //characters preloaded
-    this.load.image('skeleton', 'assets/Skeleton/Idle.png');
-    this.load.image('cat', 'assets/cat-like-creature.png')
   }
 
   create() {

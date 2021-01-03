@@ -4,12 +4,10 @@ import BootScene from './scenes/BootScene';
 import GameScene from './scenes/GameScene';
 import TitleScreen from './scenes/TitleScreen';
 
-const canvas = document.getElementById('game-canvas');
 const config = {
-  type: Phaser.WEB_GL, //why this exactly
+  type: Phaser.WEBGL,
   width: 1000,
   height: 600,
-  canvas,
   physics: {
     default: 'arcade',
     arcade: {

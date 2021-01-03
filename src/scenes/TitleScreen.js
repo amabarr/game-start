@@ -46,6 +46,7 @@ class TitleScreen extends Scene {
       if (this.state === 1){
         this.state = 2;
         this.title.visible = false;
+        this.title.destroy()
         this.instructions.visible = true;
       } else {
         this.scene.start("scene-game");

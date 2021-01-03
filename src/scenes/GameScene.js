@@ -1,4 +1,5 @@
-import {Scene} from 'phaser';
+import Phaser, {Scene} from 'phaser'
+import {Player} from '../entities/Player'
 
 class GameScene extends Scene {
 
@@ -7,38 +8,55 @@ class GameScene extends Scene {
   }
 
   create() {
-    // Add, scale, and make up a speed for our creature
-    this.cat = this.physics.add.sprite(10, 10, 'cat');
-    this.cat.body.setAllowGravity(false);
-    this.cat.setScale(0.5);
-    this.catSpeed = 300;
+    this.createBackgrounds();
+    this.createTileMap()
+    this.bindKeys()
+
 
     // Create a helper object for our arrow keys
     this.cursors = this.input.keyboard.createCursorKeys();
+
+    // set player
+    // this.player = new Player(this, 16, 9 * 16);
+    this.input.enabled = true;
   }
 
   update() {
     // Listen for keyboard input
-    const {left, right, up, down} = this.cursors;
-    if (left.isDown) {
-      this.cat.setVelocityX(-this.catSpeed);
-    }
-    else if (right.isDown) {
-      this.cat.setVelocityX(this.catSpeed);
-    }
-    else {
-      this.cat.setVelocityX(0);
-    }
-    if (up.isDown) {
-      this.cat.setVelocityY(-this.catSpeed);
-    }
-    else if (down.isDown) {
-      this.cat.setVelocityY(this.catSpeed);
-    }
-    else {
-      this.cat.setVelocityY(0);
-    }
   }
 
+  bindKeys(){
+    this.keyRight = this.input.keyboard.addKey("RIGHT");
+    this.keyLeft = this.input.keyboard.addKey("LEFT");
+    this.keyJump = this.input.keyboard.addKey("X");
+    this.keyJump2 = this.input.keyboard.addKey("K");
+    this.keyCrouch = this.input.keyboard.addKey("DOWN");
+    this.keyAttack = this.input.keyboard.addKey("C");
+  }
+
+    createBackgrounds() {
+      console.log('background created')
+    }
+
+
+    createTileMap() {
+      this.map = this.make.tilemap({
+        key: "map"
+      });
+      const tileset = this.map.addTilesetImage('tileset', `tiles`, 16, 16);
+      const background = this.map.addTilesetImage('background', 'background', 16, 16)
+      const columns = this.map.addTilesetImage('columns', 'columns', 16, 16)
+
+      const tilesets = [tileset, background, columns]
+
+      //tilesetName, key, tileWidth, tileHeight, tile Margin, tile spacing....
+      this.churchBack = this.map.createLayer('churchBack', tilesets, 0, 0)
+      this.foreground = this.map.createLayer('foreground', tilesets, 0, 0)
+      this.floor = this.map.createLayer('floor', tilesets, 0, 0)
+
+      this.floor.setCollisionByProperty({collides: true})
+    }
+
 }
+
 export default GameScene;
