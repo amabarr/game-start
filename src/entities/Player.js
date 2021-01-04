@@ -168,7 +168,7 @@ export class Player extends Phaser.GameObjects.Sprite {
 
   jump() {
     this.body.velocity.y = -this.jumpSpeed;
-    this.scene.audioJump.play();
+    // this.scene.audioJump.play();
   }
 
   crouch() {
@@ -193,21 +193,21 @@ export class Player extends Phaser.GameObjects.Sprite {
       this.play("player_punch", true);
     }
 
-    this.scene.audioAttack.play();
+    // this.scene.audioAttack.play();
   }
 
   airAttack() {
     this.isAirAttacking = true;
     this.play("player_flying_kick", true);
     this.body.velocity.x *= 1.5;
-    this.scene.audioAttack.play();
+    // this.scene.audioAttack.play();
   }
 
   crouchAttack() {
     this.isAttacking = true;
     this.body.velocity.x = 0;
     this.play("player_crouch_kick", true);
-    this.scene.audioAttack.play();
+    // this.scene.audioAttack.play();
   }
 
 

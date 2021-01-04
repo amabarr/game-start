@@ -6,7 +6,6 @@ class TitleScreen extends Scene {
   }
 
   create() {
-    this.createBackground()
     this.counter = 0
     //adding the title! Edit title later
     this.title = this.add.image(500, 300, "title")
@@ -54,17 +53,6 @@ class TitleScreen extends Scene {
 
     }
 
-  }
-
-  createBackground(){
-    this.background = this.add.tileSprite(0, 0, 1000, 600, "background")
-    this.background.setOrigin(0, 0)
-    this.background.setScrollFactor(0)
-
-
-    this.columns = this.add.tileSprite(0, 0, 1000, 600, "columns");
-    this.columns.setOrigin(0, 0);
-    this.columns.setScrollFactor(0);
   }
 }
 

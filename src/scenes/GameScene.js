@@ -17,11 +17,21 @@ class GameScene extends Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
 
     // set player
-    // this.player = new Player(this, 16, 9 * 16);
+    this.player = new Player(this, 16, 9 * 16);
+
+
+    //camera
+    this.camera = this.cameras.main
+    this.camera.startFollow(this.player)
+    this.camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+
+    //physics
+    this.physics.add.collider(this.floor, this.player)
     this.input.enabled = true;
   }
 
   update() {
+    this.playerController()
     // Listen for keyboard input
   }
 
@@ -56,6 +66,45 @@ class GameScene extends Scene {
 
       this.floor.setCollisionByProperty({collides: true})
     }
+
+
+    playerController() {
+
+      if (this.player.isAttacking || this.player.isAirAttacking ) {
+        return;
+      }
+
+      if (this.keyRight.isDown) {
+        this.player.moveRight();
+      } else if (this.keyLeft.isDown) {
+        this.player.moveLeft();
+      } else {
+        this.player.stopMove();
+      }
+
+      if ((this.keyJump.isDown || this.keyJump2.isDown) &&
+        this.player.body.onFloor() && !this.player.isCrouching) {
+        this.player.jump();
+      }
+
+      if (this.keyCrouch.isDown && this.player.body.onFloor()) {
+        this.player.crouch();
+      } else if (this.keyCrouch.isUp) {
+        this.player.standUp();
+      }
+
+
+      if (Phaser.Input.Keyboard.JustDown(this.keyAttack)) {
+        if(this.player.isCrouching){
+            this.player.crouchAttack();
+        }else if(this.player.body.onFloor()){
+            this.player.attack();
+
+        }else{
+          this.player.airAttack();
+        }
+
+      }}
 
 }
 

@@ -7,11 +7,11 @@ class BootScene extends Scene {
 
   preload(){
     //preloading background stuff
-    this.load.image('background', 'assets/Environment/background.png')
-    this.load.image('columns', 'assets/Environment/columns.png')
+    this.load.image('background', 'assets/environment/background.png')
+    this.load.image('columns', 'assets/environment/columns.png')
 
      // load tiled map
-    this.load.image('tiles', 'assets/Environment/tileset.png', {
+    this.load.image('tiles', 'assets/environment/tileset.png', {
       frameWidth: 16,
       frameHeight: 16
     })

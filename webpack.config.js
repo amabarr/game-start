@@ -1,8 +1,16 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const webpack = require('webpack')
+const path = require('path');
 
 module.exports = {
+  entry: ['./src/game.js'],
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: "./public/bundle.js",
+  },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -26,7 +34,12 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
-
+        test: [/\.vert$/, /\.frag$/],
+        use: "raw-loader"
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg|xml)$/i,
+        use: "file-loader"
       }
     ]
   },
@@ -39,9 +52,13 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
+    new webpack.DefinePlugin({
+      CANVAS_RENDERER: JSON.stringify(true),
+      WEBGL_RENDERER: JSON.stringify(true)
+    }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: './src/assets', to : 'assets' }
+        { from: './src/assets', to: 'assets' }
       ]
     })
   ]

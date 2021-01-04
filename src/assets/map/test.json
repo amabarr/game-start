@@ -48,7 +48,7 @@
         {
          "columns":33,
          "firstgid":1,
-         "image":"assets/Environment/columns.png",
+         "image":"assets/environment/columns.png",
          "imageheight":224,
          "imagewidth":528,
          "margin":0,
@@ -61,7 +61,7 @@
         {
          "columns":68,
          "firstgid":463,
-         "image":"assets/Environment/background.png",
+         "image":"assets/environment/background.png",
          "imageheight":224,
          "imagewidth":1088,
          "margin":0,
@@ -74,7 +74,7 @@
         {
          "columns":21,
          "firstgid":1415,
-         "image":"assets/Environment/tileset.png",
+         "image":"assets/environment/tileset.png",
          "imageheight":224,
          "imagewidth":336,
          "margin":0,
