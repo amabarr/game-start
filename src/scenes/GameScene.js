@@ -12,6 +12,9 @@ class GameScene extends Scene {
     this.createTileMap()
     this.bindKeys()
 
+    this.music = this.sound.add("levelOneMusic", {loop: true, volume: 0.3})
+    this.music.play();
+
 
     // Create a helper object for our arrow keys
     this.cursors = this.input.keyboard.createCursorKeys();

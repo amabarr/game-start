@@ -28,6 +28,9 @@ class BootScene extends Scene {
     this.load.image("enter", "assets/images/press-enter-text.png");
     this.load.image("instructions", "assets/images/instructions.png");
     this.load.image("gameover", "assets/images/game-over.png");
+
+    //music
+    this.load.audio("levelOneMusic", "assets/audio/ThemeSong.mp3")
   }
 
   create() {
