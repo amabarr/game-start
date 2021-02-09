@@ -15,7 +15,7 @@ class BootScene extends Scene {
       frameWidth: 16,
       frameHeight: 16
     })
-    this.load.tilemapTiledJSON("map", "assets/map/test.json");
+    this.load.tilemapTiledJSON("map", "assets/map/test2.json");
 
 
 

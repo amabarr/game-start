@@ -8,13 +8,11 @@ class GameScene extends Scene {
   }
 
   create() {
-    this.createBackgrounds();
     this.createTileMap()
     this.bindKeys()
 
     this.music = this.sound.add("levelOneMusic", {loop: true, volume: 0.3})
     this.music.play();
-
 
     // Create a helper object for our arrow keys
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -42,17 +40,13 @@ class GameScene extends Scene {
     this.keyRight = this.input.keyboard.addKey("RIGHT");
     this.keyLeft = this.input.keyboard.addKey("LEFT");
     this.keyJump = this.input.keyboard.addKey("X");
-    this.keyJump2 = this.input.keyboard.addKey("K");
+    this.keyJump2 = this.input.keyboard.addKey("UP");
     this.keyCrouch = this.input.keyboard.addKey("DOWN");
     this.keyAttack = this.input.keyboard.addKey("C");
   }
 
-    createBackgrounds() {
-      console.log('background created')
-    }
 
-
-    createTileMap() {
+  createTileMap() {
       this.map = this.make.tilemap({
         key: "map"
       });
